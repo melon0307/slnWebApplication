@@ -41,7 +41,7 @@ namespace prjWebApplication.Controllers
         [HttpGet]
         public IEnumerable<Product> GetProductsBySupplierId(int id)
         {
-            return _context.Products.Where(p => p.SupplierId == id);
+            return _context.Products.Where(p => p.SupplierId == id); 
         }
     }
 }
