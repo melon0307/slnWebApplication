@@ -28,6 +28,16 @@ namespace prjWebApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    //builder.WithOrigins("http://www.sample.com","https://localhost:44389");
+                    builder.WithOrigins("*").AllowAnyHeader().AllowAnyMethod(); ;
+
+                });
+            });
+
 
             services.AddControllers();
             services.AddDbContext<NorthwindContext>(options =>
@@ -53,6 +63,8 @@ namespace prjWebApplication
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
